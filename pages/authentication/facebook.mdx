@@ -1,0 +1,39 @@
+# Authentication
+
+To interact with our API, you'll authenticate requests using the `x-api-key` header. Manage your API key securely in your project API Keys page.
+
+Your API key grants significant privileges, so it's crucial to keep it confidential. Avoid sharing your API key in public repositories, client-side code, or any publicly accessible areas.
+
+## Usage
+To make API requests, include your API key in the `x-api-key` header of your HTTP requests. Here are examples for both Node.js and cURL:
+
+### Node.js Example (with Axios)
+
+```js copy
+const axios = require('axios');
+
+async function getData() {
+    const response = await axios.get('https://www.lecturekit.io/api/v1/courses', {
+        headers: {
+            'x-api-key': 'YOUR_API_KEY'
+        }
+    });
+
+    return response.data;
+}
+
+getData();
+```
+
+### cURL Example
+```curl copy
+curl https://www.lecturekit.io/api/v1/courses \
+  -H 'x-api-key: YOUR_API_KEY'
+```
+
+## Important Security Reminders
+
+- **Security First:** Your API key is sensitive information, treat it as such.
+- **Authentication is Mandatory:** API requests without authentication will fail.
+
+Remember, your API key is your access pass, so guard it wisely!
