@@ -1,40 +1,21 @@
-# Authentication
+# Google Authentication
 
-To interact with our API, you'll authenticate requests using the `x-api-key` header. Manage your API key securely in your project API Keys page.
+Follow these steps to set up Google Authentication.
 
-Your API key grants significant privileges, so it's crucial to keep it confidential. Avoid sharing your API key in public repositories, client-side code, or any publicly accessible areas.
+## Step 1: Create a Google Cloud Project
 
-## Usage
+1. Go to [Google Cloud Console](https://console.cloud.google.com/).
+2. Create a new project.
+3. Navigate to "APIs & Services" > "Credentials."
+4. Click "Create Credentials" and select "OAuth 2.0 Client IDs."
+5. Configure your consent screen and create a new OAuth 2.0 client ID.
+6. Under "Authorized redirect URIs," add your redirect URL:
+   - `http://localhost:3000/api/auth/callback/google` for local development.
+   - `https://example.com/api/auth/callback/google` for production.
 
-To make API requests, include your API key in the `x-api-key` header of your HTTP requests. Here are examples for both Node.js and cURL:
+## Step 2: Copy Credentials to `.env.local`
 
-### Node.js Example (with Axios)
-
-```js copy
-const axios = require('axios');
-
-async function getData() {
-    const response = await axios.get('https://www.lecturekit.io/api/v1/courses', {
-        headers: {
-            'x-api-key': 'YOUR_API_KEY'
-        }
-    });
-
-    return response.data;
-}
-
-getData();
-```
-
-### cURL Example
-```curl copy
-curl https://www.lecturekit.io/api/v1/courses \
-  -H 'x-api-key: YOUR_API_KEY'
-```
-
-## Important Security Reminders
-
-- **Security First:** Your API key is sensitive information, treat it as such.
-- **Authentication is Mandatory:** API requests without authentication will fail.
-
-Remember, your API key is your access pass, so guard it wisely!
+1. After creating your OAuth credentials, copy the `Client ID` and `Client Secret` provided by Google.
+2. In your project’s `.env.local` file, add the following environment variables, and paste the values.
+   - `GOOGLE_CLIENT_ID`
+   - `GOOGLE_CLIENT_SECRET`

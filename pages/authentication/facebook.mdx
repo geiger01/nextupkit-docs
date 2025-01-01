@@ -1,39 +1,26 @@
-# Authentication
+# Facebook Authentication
 
-To interact with our API, you'll authenticate requests using the `x-api-key` header. Manage your API key securely in your project API Keys page.
+Follow these steps to set up Facebook Authentication.
 
-Your API key grants significant privileges, so it's crucial to keep it confidential. Avoid sharing your API key in public repositories, client-side code, or any publicly accessible areas.
+## Step 1: Create a Facebook App
 
-## Usage
-To make API requests, include your API key in the `x-api-key` header of your HTTP requests. Here are examples for both Node.js and cURL:
+1. Go to the [Facebook Developers Console](https://developers.facebook.com/).
+2. Click on "Get Started" and follow the prompts to create a developer account if you haven't already.
+3. Once your account is set up, navigate to "My Apps" and click "Create App."
+4. Choose "For Everything Else" and click "Next."
+5. Enter your app's name and email, then click "Create App ID."
+6. On the app's dashboard, go to "Add a Product" and select "Facebook Login."
 
-### Node.js Example (with Axios)
+## Step 2: Configure Facebook Login
 
-```js copy
-const axios = require('axios');
+1. In the "Facebook Login" section, select "Web."
+2. Under "Valid OAuth Redirect URIs," add your redirect URL:
+   - `http://localhost:3000/api/auth/callback/facebook` for local development.
+   - `https://example.com/api/auth/callback/facebook` for production.
 
-async function getData() {
-    const response = await axios.get('https://www.lecturekit.io/api/v1/courses', {
-        headers: {
-            'x-api-key': 'YOUR_API_KEY'
-        }
-    });
+## Step 3: Copy Credentials to `.env.local`
 
-    return response.data;
-}
-
-getData();
-```
-
-### cURL Example
-```curl copy
-curl https://www.lecturekit.io/api/v1/courses \
-  -H 'x-api-key: YOUR_API_KEY'
-```
-
-## Important Security Reminders
-
-- **Security First:** Your API key is sensitive information, treat it as such.
-- **Authentication is Mandatory:** API requests without authentication will fail.
-
-Remember, your API key is your access pass, so guard it wisely!
+1. After creating your Facebook App, go to "Settings" > "Basic" and copy the `App ID` and `App Secret`.
+2. In your project’s `.env.local` file, add the following environment variables and paste the values:
+   - `FACEBOOK_CLIENT_ID`
+   - `FACEBOOK_CLIENT_SECRET`

@@ -1,3 +1,13 @@
 # Authentication Overview
 
 NextUpKit provides easy-to-integrate authentication options to secure and streamline user access. You can quickly set up passwordless login and third-party logins to enhance the user experience.
+
+- Authentication is made using [NextAuth](https://next-auth.js.org)
+
+## Update your `.env.local` file:
+
+```bash copy
+ NEXTAUTH_SECRET=
+ NEXTAUTH_URL=     http://localhost:3000
+```
+    - Make sure to generate a key for `NEXTAUTH_SECRET`, you can use [This Key Generator](https://generate.plus/en/base64) to generate a strong key.
