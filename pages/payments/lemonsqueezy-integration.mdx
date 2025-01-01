@@ -1,29 +1,49 @@
-# Getting Started
+# Setting Up LemonSqueezy Integration
 
-This guide will get you up and running with LectureKit API. To get started on our platform, you need to:
+Follow these steps to integrate LemonSqueezy for handling subscriptions, one-time payments, and subscription plans in your application.
 
-1. [Create an Account](#create-an-account)
-2. [Create a Project](#create-a-project)
-3. [Get Your API Key](#get-your-api-key)
-4. [API Authentication](#next-api-authentication)
+## Step 1: Create a LemonSqueezy Account
 
-## Create an Account
+1. Go to the [LemonSqueezy website](https://www.lemonsqueezy.com/) and sign up for an account.
+2. Once logged in, set up your store and take note of the **Store ID**.
 
-If you're new to LectureKit, head over to our [Signup page](https://www.lecturekit.io/sign-up) and create an account. After that you'll be redirected to the dashboard.
+## Step 2: Generate API Key
 
-## Create a Project
+1. Navigate to the **API** section in your LemonSqueezy dashboard.
+2. Create an API key and copy it. This key is required for server-side interactions.
 
-Once you're logged in, navigate to the dashboard and click on the "Create Project" button and give your project a name. Projects in LectureKit are where you'll manage your courses.
+## Step 3: Add Environment Variables
 
-## Get Your API Key
+1. Open your `.env.local` file.
+2. Add the following environment variables:
+   ```env copy
+   LEMONSQUEEZY_STORE_ID= YOUR_STORE_ID
+   LEMONSQUEEZY_API_KEY= YOUR_API_KEY
+   LEMONSQUEEZY_WEBHOOK_SECRET= YOUR_WEBHOOK_SECRET
 
-To access LectureKit's API functionalities, you'll need an API key. Go to the "API Keys" page inside your project. Generate an API key, copy the provided API key and keep it secure. If you ever need to regenerate it, you can do so from this page.
+   ```
 
-<div style={{ marginTop:'20px', border:'1px solid #e1e1e1', borderRadius: '5px', overflow: 'hidden', maxWidth: '600px' }}>
-  <img src={"/api-key.png"} alt="Image Alt Text"  />
-</div>
+## Step 4: Set Up Product and Variant IDs
 
+1. In your LemonSqueezy store, create your products (subscription or single payment).
+2. Under each product, copy get the Variant ID.
+3. Update the `lib/subscriptions.ts` file with your product Variant IDs.
 
-## Next: API Authentication
+``` ts
+export const basicPlan: ISubscriptionPlan = {
+  name: 'Basic Plan',
+  type: 'basic',
+  // Replace these IDs with the actual variant IDs from LemonSqueezy
+  monthlyPlanId: '269320',
+  yearlyPlanId: '269321',
+};
 
-Now that you have your account, project, and API key set up, it's time to authenticate your API calls. In the next step, we'll guide you through the process of API authenticating.
+export const proPlan: ISubscriptionPlan = {
+  name: 'Pro Plan',
+  type: 'pro',
+  // Replace these IDs with the actual variant IDs from LemonSqueezy
+  monthlyPlanId: '269322',
+  yearlyPlanId: '269323',
+};
+
+```

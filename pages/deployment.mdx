@@ -1,28 +1,42 @@
-# Embedding and sharing courses
+# Deployment
 
-This guide will help you get up and running with embedding and sharing your courses on your site.
+Follow these steps to deploy your application. While this guide uses **Vercel** as the deployment platform, you can choose any platform that suits your needs.
 
-## Embedding
+## Step 1: Prepare Your Application
 
-LectureKit enables you to embed your courses in an interactive way on your sites. Here's how to do it:
+1. Ensure your application is production-ready:
+   - All environment variables are correctly set in `.env.local`.
+   - The application works locally using `npm run dev` or `yarn dev`.
 
-1. **Create a Course**: Start by creating a course in LectureKit.
+## Step 2: Choose Your Deployment Platform
 
-2. **Copy the Embed Code**: Once your course is created, navigate to the course page. Click on the "Share" button in the top right corner to access the embed code. Copy the provided code.
-  - Alternatively, you can access the embed code from your project's courses page. Click the "More" button on each course, then click the "Embed" button to copy the code.
+While this guide focuses on deploying to **Vercel**, you can choose any deployment platform, such as **Netlify**, **AWS**, **Heroku**, or **DigitalOcean**.
 
+For **Vercel**, it’s seamless to deploy with GitHub, GitLab, or Bitbucket integration.
 
+## Step 3: Deploy to Vercel
 
-3. **Paste the Embed Code**: Now, go to the page on your site where you want to embed the course. Paste the embed code into the HTML of your site.
+1. Go to [Vercel](https://vercel.com) and sign up or log in to your account.
+2. After logging in, click on **New Project**.
+3. Choose your Git provider (GitHub, GitLab, or Bitbucket) and select the repository containing your app.
+4. Vercel will automatically detect the framework (Next.js in this case) and configure the build settings.
+5. Click **Deploy**. Vercel will deploy your app, and after a few moments, you’ll receive a production URL.
 
-4. **View Your Embedded Course**: Save your changes and view your site. Your LectureKit course should now be embedded and ready for users to access directly from your site.
+### Environment Variables on Vercel
 
+Make sure to add your environment variables to Vercel:
 
+1. Go to the **Settings** tab of your project on Vercel.
+2. Under **Environment Variables**, add the necessary variables that you have in your `.env.local` file (e.g., `LEMONSQUEEZY_API_KEY`, `GOOGLE_CLIENT_ID`, etc.).
+3. After adding the environment variables, click **Save**.
 
-## Sharing
+Vercel will automatically rebuild your app whenever you push changes to your connected Git repository.
 
-In addition to embedding, LectureKit allows you to easily share your courses with others. Here's how:
+## Step 4: Verify Your Deployment
 
-1. **Share Course Link**: Once your course is created, navigate to the course page. Click on the "Share" button in the top right corner to access the share link. Copy the provided link.
-  - Alternatively, you can access the share link from your project's courses page. Click the "More" button on each course, then click the "Embed" button to copy the link.
+1. After deployment is complete, visit the URL Vercel provided for your project.
+2. Check if all features are working correctly in the live environment, including authentication, subscription handling, and email sending.
 
+---
+
+Happy deploying! 🚀
