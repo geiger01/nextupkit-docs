@@ -1,30 +1,15 @@
-# Getting Started
+# Setting Up Microsoft Clarity
 
-This guide will get you up and running with LectureKit API. To get started on our platform, you need to:
+Follow these steps to integrate Microsoft Clarity.
 
-1. [Create an Account](#create-an-account)
-2. [Create a Project](#create-a-project)
-3. [Get Your API Key](#get-your-api-key)
-4. [API Authentication](#next-api-authentication)
+## Step 1: Create a Microsoft Clarity Account
 
+1. Go to the [Microsoft Clarity](https://clarity.microsoft.com/) website.
+2. Sign in with your Microsoft account and create a new project for your website.
+3. Add your website details, and you'll receive a **Clarity Project ID**.
 
-## Create an Account
+## Step 2: Add the Project ID to `.env.local`
 
-If you're new to LectureKit, head over to our [Signup page](https://www.lecturekit.io/sign-up) and create an account. After that you'll be redirected to the dashboard.
-
-## Create a Project
-
-Once you're logged in, navigate to the dashboard and click on the "Create Project" button and give your project a name. Projects in LectureKit are where you'll manage your courses.
-
-## Get Your API Key
-
-To access LectureKit's API functionalities, you'll need an API key. Go to the "API Keys" page inside your project. Generate an API key, copy the provided API key and keep it secure. If you ever need to regenerate it, you can do so from this page.
-
-<div style={{ marginTop:'20px', border:'1px solid #e1e1e1', borderRadius: '5px', overflow: 'hidden', maxWidth: '600px' }}>
-  <img src={"/api-key.png"} alt="Image Alt Text"  />
-</div>
-
-
-## Next: API Authentication
-
-Now that you have your account, project, and API key set up, it's time to authenticate your API calls. In the next step, we'll guide you through the process of API authenticating.
+1. In your project’s `.env.local` file, add the following environment variable:
+   ```env
+   NEXT_PUBLIC_MICROSOFT_CLARITY=YOUR_PROJECT_ID

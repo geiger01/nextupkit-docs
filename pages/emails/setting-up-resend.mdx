@@ -1,30 +1,37 @@
-# Getting Started
+# Setting Up Resend
 
-This guide will get you up and running with LectureKit API. To get started on our platform, you need to:
+Follow these steps to configure Resend as your email provider for sending transactional emails and allowing magic login links.
 
-1. [Create an Account](#create-an-account)
-2. [Create a Project](#create-a-project)
-3. [Get Your API Key](#get-your-api-key)
-4. [API Authentication](#next-api-authentication)
+## Setup
 
+1. Go to the [Resend website](https://resend.com) and create an account.
+2. Once logged in, navigate to the **API Keys** section.
+3. Create a new API key and copy it. You'll need this key in the next step.
+4. In your project’s `.env.local` file, add the following environment variable and paste the value:
+   - `RESEND_API_KEY=   your-resend-api-key`
 
-## Create an Account
+## Sending Transactional Emails
 
-If you're new to LectureKit, head over to our [Signup page](https://www.lecturekit.io/sign-up) and create an account. After that you'll be redirected to the dashboard.
+To send emails, you'll use the helper function `sendEmail` from the `lib/email.ts` file.
 
-## Create a Project
+### Helper Function: `lib/email.ts`
 
-Once you're logged in, navigate to the dashboard and click on the "Create Project" button and give your project a name. Projects in LectureKit are where you'll manage your courses.
+```ts
+import { Resend } from 'resend';
+import { FROM_EMAIL } from './consts';
 
-## Get Your API Key
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-To access LectureKit's API functionalities, you'll need an API key. Go to the "API Keys" page inside your project. Generate an API key, copy the provided API key and keep it secure. If you ever need to regenerate it, you can do so from this page.
-
-<div style={{ marginTop:'20px', border:'1px solid #e1e1e1', borderRadius: '5px', overflow: 'hidden', maxWidth: '600px' }}>
-  <img src={"/api-key.png"} alt="Image Alt Text"  />
-</div>
-
-
-## Next: API Authentication
-
-Now that you have your account, project, and API key set up, it's time to authenticate your API calls. In the next step, we'll guide you through the process of API authenticating.
+export const sendEmail = async (
+  to: string | string[],
+  subject: string,
+  html: string,
+  from?: string
+) => {
+  await resend.emails.send({
+    from: from || FROM_EMAIL,
+    to,
+    subject,
+    html,
+  });
+};
