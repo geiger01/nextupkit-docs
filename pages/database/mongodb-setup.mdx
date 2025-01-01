@@ -1,0 +1,39 @@
+# MongoDB Setup
+
+For local development, you can connect to a local MongoDB instance using the connection string in the `.env.local` file. For production, use MongoDB Atlas.
+
+Follow these steps to set up MongoDB Atlas.
+
+## Step 1: Create a MongoDB Atlas Account
+
+1. Go to [MongoDB Atlas](https://cloud.mongodb.com) and sign up for a free account.
+2. Once logged in, create a new project by clicking on "Create a New Project."
+
+## Step 2: Create a Cluster
+
+1. In your new project, click on "Build a Cluster."
+2. Choose the free tier (M0) for the cluster and select a cloud provider and region.
+3. Click on "Create Cluster" and wait for it to be provisioned (this might take a few minutes).
+
+## Step 3: Set Up Database User
+
+1. Navigate to the "Database Access" tab in MongoDB Atlas.
+2. Click "Add New Database User."
+3. Set a username and password for your MongoDB user.
+4. Select "Read and Write to any database" for the user’s privileges.
+5. Save the user credentials.
+
+## Step 4: Allow Access from Your IP
+
+1. Go to the "Network Access" tab in MongoDB Atlas.
+2. Click "Add IP Address" and allow access from your current IP address (or allow access from anywhere using `0.0.0.0/0`).
+
+## Step 5: Get Your Mongo URI
+
+1. Go to the "Clusters" tab and click "Connect."
+2. Choose "Connect your application."
+3. Copy the provided MongoDB connection string (URI) for your cluster.
+
+## Step 6: Add the Mongo URI to `.env.local`
+
+In your project’s `.env.local` file, add the connection string you copied from MongoDB to `MONGODB_URI`.
