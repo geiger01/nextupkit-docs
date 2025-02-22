@@ -1,3 +1,4 @@
+import { useConfig } from 'nextra-theme-docs';
 import { Logo } from './components/logo';
 
 export default {
