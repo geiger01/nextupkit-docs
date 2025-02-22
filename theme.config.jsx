@@ -14,10 +14,10 @@ export default {
 				title:
 					'Documentation | NextUpKit - Ship Startups Fast, Without Spending Much',
 				description:
-					'The Next.js starter kit that will help you transform your ideas into reality without breaking the bank.',
+					'NextUpKit is an affordable Next.js starter kit and boilerplate to help you build and launch your SaaS products quickly and affordably.',
 				images: [
 					{
-						url: 'https://lecturekit-assets.s3.amazonaws.com/og-ce7afca2-8b30-44c0-a04c-3bc9e3d0b0d2.png',
+						url: 'https://lecturekit-assets.s3.eu-north-1.amazonaws.com/nextupkit-og.png',
 						width: 1200,
 						height: 630,
 					},
@@ -30,9 +30,9 @@ export default {
 		const title = config.title + ' | NextUpKit';
 
 		const description =
-			'The Next.js starter kit that will help you transform your ideas into reality without breaking the bank.';
+			'NextUpKit is an affordable Next.js starter kit and boilerplate to help you build and launch your SaaS products quickly and affordably.';
 		const ogImage =
-			'https://lecturekit-assets.s3.amazonaws.com/og-ce7afca2-8b30-44c0-a04c-3bc9e3d0b0d2.png';
+			'https://lecturekit-assets.s3.eu-north-1.amazonaws.com/nextupkit-og.png';
 
 		return (
 			<>
