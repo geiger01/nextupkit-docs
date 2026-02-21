@@ -1,0 +1,42 @@
+# Blog
+
+A simple blog system for your NextUpKit application.
+
+## Features
+
+- Markdown-based posts
+- Static generation
+- SEO optimized
+- Clean URLs
+
+## Quick Start
+
+1. Create posts in `/blog` directory
+2. Use `.mdx` format for rich content
+3. Add frontmatter for metadata
+
+```markdown
+---
+title: "My First Post"
+date: "2024-01-01"
+author: "Your Name"
+---
+
+# Hello World
+
+Your blog content here...
+```
+
+## Configuration
+
+Blog settings can be configured in your Next.js config:
+
+```javascript
+// next.config.js
+module.exports = {
+  // Blog configuration
+  pageExtensions: ['js', 'jsx', 'mdx'],
+}
+```
+
+That's it! Your blog is ready to use.
