@@ -6,6 +6,7 @@ export default {
 	payments: 'Payments',
 	'customer-support': 'Customer Support',
 	analytics: 'Analytics',
+	blog: 'Blog',
 	components: 'Components',
 	deployment: '🚀 Deployment',
 	home: {
